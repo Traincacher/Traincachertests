@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         format={"pretty",
                 "html:target/cucumber"},
-        features = {"src/test/resources/traincacher.be/features/searchride.feature"},
+        features = {"src/test/resources/traincacher.be/features/gecachedTreintrajectVerwijderen.feature"},
         tags={"~@skip"},
         glue="traincacher.be/tests/steps")
 public class Testrunner {

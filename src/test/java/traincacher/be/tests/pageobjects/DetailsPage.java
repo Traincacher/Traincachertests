@@ -18,4 +18,9 @@ public class DetailsPage extends AbstractPage{
         String toText = driver.findElement(By.id("idtodetails")).getText();
         return toText;
     }
+
+    public String findErrorResult() {
+        String errorText = driver.findElement(By.id("iderror")).getText();
+        return errorText;
+    }
 }
