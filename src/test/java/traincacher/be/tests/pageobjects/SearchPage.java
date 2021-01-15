@@ -1,16 +1,14 @@
 package traincacher.be.tests.pageobjects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 public class SearchPage extends AbstractPage {
     public SearchPage(WebDriver driver) {
         super(driver);
     }
-
-    /*public SearchPage navigateToSearchPage() {
-        driver.navigate().to("http://localhost:4200/");
-        return new SearchPage(driver);
-    }*/
 
     public SearchPage enterFromSearch(String from){
         driver.findElement(By.id("idfrom")).sendKeys(from);
@@ -45,6 +43,19 @@ public class SearchPage extends AbstractPage {
     public SearchPage clickLike() {
         driver.findElement(By.id("idlike")).click();
         return this;
+    }
+
+    public boolean checkFavourite() {
+        boolean containsFavourite = false;
+
+        List<WebElement> listOfElements = driver.findElements(By.id("idfavouriteride"));
+
+        if (!listOfElements.isEmpty())
+        {
+            containsFavourite = true;
+        }
+
+        return containsFavourite;
     }
 }
 

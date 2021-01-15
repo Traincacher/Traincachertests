@@ -7,6 +7,7 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import traincacher.be.tests.pageobjects.DetailsPage;
 import traincacher.be.tests.pageobjects.SearchPage;
 
@@ -21,7 +22,16 @@ public class TreinritZoekenSteps {
     @BeforeClass
     public void init(){
         System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-        driver = new ChromeDriver();
+
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("headless");
+        options.addArguments("--disable-gpu");
+        options.addArguments("disable-infobars");
+        options.addArguments("--disable-extensions");
+        options.addArguments("window-size=1200x600");
+        options.addArguments("--no-sandbox");
+
+        driver = new ChromeDriver(options);
         searchPage = new SearchPage(driver);
         detailsPage = new DetailsPage(driver);
     }
@@ -50,19 +60,15 @@ public class TreinritZoekenSteps {
     @Then("^zie ik de mogelijke treintrajecten tussen \"([^\"]*)\" en \"([^\"]*)\"$")
     public void zieIkDeMogelijkeTreintrajectenTussenEn(String from, String to) throws Throwable {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
         Assert.assertTrue(detailsPage.findFrom().contains(from));
         Assert.assertTrue(detailsPage.findTo().contains(to));
-
         driver.quit();
     }
 
     @Then("^krijg ik geen mogelijke treintrajecten$")
     public void krijgIkGeenMogelijkeTreintrajecten() {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
         Assert.assertTrue(detailsPage.findErrorResult().contains("Geen ritten gevonden"));
-
         driver.quit();
     }
 }

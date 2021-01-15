@@ -7,7 +7,7 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import traincacher.be.tests.pageobjects.DetailsPage;
+import org.openqa.selenium.chrome.ChromeOptions;
 import traincacher.be.tests.pageobjects.FavouritePage;
 import traincacher.be.tests.pageobjects.SearchPage;
 
@@ -17,15 +17,22 @@ public class GecachedTreintrajectVerwijderenSteps {
 
     WebDriver driver;
     SearchPage searchPage;
-    DetailsPage detailsPage;
     FavouritePage favouritePage;
 
     @BeforeClass
     public void init(){
         System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-        driver = new ChromeDriver();
+
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("headless");
+        options.addArguments("--disable-gpu");
+        options.addArguments("disable-infobars");
+        options.addArguments("--disable-extensions");
+        options.addArguments("window-size=1200x600");
+        options.addArguments("--no-sandbox");
+
+        driver = new ChromeDriver(options);
         searchPage = new SearchPage(driver);
-        detailsPage = new DetailsPage(driver);
         favouritePage = new FavouritePage(driver);
 
         //add cached traject
