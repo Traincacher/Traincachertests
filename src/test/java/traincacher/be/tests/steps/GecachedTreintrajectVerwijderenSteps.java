@@ -74,6 +74,6 @@ public class GecachedTreintrajectVerwijderenSteps {
         boolean notContainsTreintraject = favouritePage.findFavourite("Zellik", "Asse");
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         Assert.assertTrue(notContainsTreintraject);
-        driver.quit();
+        driver.quit();//
     }
 }
