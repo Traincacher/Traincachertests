@@ -17,6 +17,7 @@ import traincacher.be.tests.pageobjects.SearchPage;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class GecachedTreintrajectKijkenSteps {
 
@@ -52,8 +53,10 @@ public class GecachedTreintrajectKijkenSteps {
         options.addArguments("--disable-extensions");
         options.addArguments("window-size=1200x600");
         options.addArguments("--no-sandbox");
-
         driver = new ChromeDriver(options);
+
+        //driver = new ChromeDriver();
+
         searchPage = new SearchPage(driver);
 
         //add cached traject
@@ -77,7 +80,9 @@ public class GecachedTreintrajectKijkenSteps {
 
     @Then("^krijg ik een lijst van alle treintrajecten die gecached werden voor mij$")
     public void krijgIkEenLijstVanAlleTreintrajectenDieGecachedWerdenVoorMij() {
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         Assert.assertTrue(searchPage.checkFavourite());
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.quit();
     }
 }

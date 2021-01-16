@@ -54,13 +54,13 @@ public class GecachedTreintrajectVerwijderenSteps {
         searchPage.clickLike();
     }
 
-    @Given("^ik sta op de “favorite rides” pagina$")
+    @Given("^ik sta op de favorite rides pagina$")
     public void ikStaOpDeFavoriteRidesPagina() {
         init();
         searchPage.clickMenu();
     }
 
-    @When("^ik offline een treintraject op de knop “X” klik$")
+    @When("^ik offline een treintraject op de knop X klik$")
     public void ikOfflineEenTreintrajectOpDeKnopXKlik() {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         favouritePage.clickDeleteFavourite("Zellik", "Asse");
