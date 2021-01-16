@@ -45,7 +45,8 @@ public class TreinritZoekenSteps {
     @Given("^ik sta op de Traincacher homepagina$")
     public void ikStaOpDeTraincacherHomepagina() {
         init();
-        driver.navigate().to("http://localhost:4200/");
+        searchPage.navigateMainUrl();
+        //driver.navigate().to("http://localhost:4200/");
     }
 
     @When("^ik \"([^\"]*)\" in het From veld ingeef$")
@@ -60,6 +61,7 @@ public class TreinritZoekenSteps {
 
     @When("^ik op de Search-knop druk$")
     public void ikOpDeSearchKnopDruk() {
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         searchPage.clickSearch();
     }
 

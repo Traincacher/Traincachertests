@@ -55,34 +55,33 @@ public class GecachedTreintrajectKijkenSteps {
         options.addArguments("--no-sandbox");
         driver = new ChromeDriver(options);
 
-        //driver = new ChromeDriver();
-
         searchPage = new SearchPage(driver);
 
         //add cached traject
-        driver.navigate().to("http://localhost:4200/");
+        searchPage.navigateMainUrl();
         searchPage.enterFromSearch("Zellik");
         searchPage.enterToSearch("Asse");
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         searchPage.clickLike();
     }
 
     @Given("^ik ben offline op de traincacher homepagina$")
     public void ikBenOfflineOpDeTraincacherHomepagina() throws IOException {
         init();
-        driver.navigate().to("http://localhost:4200/");
+        //searchPage.navigateMainUrl();
         disconnectInternet();
     }
 
-    @When("^ik op de “favorite rides” knop klik$")
+    @When("^ik op de favorite rides knop klik$")
     public void ikOpDeFavoriteRidesKnopKlik() {
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         searchPage.clickMenu();
     }
 
     @Then("^krijg ik een lijst van alle treintrajecten die gecached werden voor mij$")
     public void krijgIkEenLijstVanAlleTreintrajectenDieGecachedWerdenVoorMij() {
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         Assert.assertTrue(searchPage.checkFavourite());
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.quit();
     }
 }

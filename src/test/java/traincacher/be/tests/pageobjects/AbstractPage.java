@@ -8,4 +8,9 @@ public class AbstractPage {
     public AbstractPage(WebDriver driver) {
         this.driver = driver;
     }
+    public AbstractPage navigateMainUrl(){
+        //driver.navigate().to("http://localhost:4200/");
+        driver.navigate().to("https://traincacher.online/");
+        return this;
+    }
 }

@@ -60,7 +60,8 @@ public class ControlerenOnlineSteps {
     @Given("^ik sta op de offline traincacher pagina$")
     public void ikStaOpDeOfflineTraincacherPagina() throws IOException {
         init();
-        driver.navigate().to("http://localhost:4200/");
+        searchPage.navigateMainUrl();
+        //driver.navigate().to("http://localhost:4200/");
         disconnectInternet();
     }
 

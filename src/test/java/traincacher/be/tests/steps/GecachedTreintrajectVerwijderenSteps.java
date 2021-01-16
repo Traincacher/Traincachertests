@@ -42,15 +42,17 @@ public class GecachedTreintrajectVerwijderenSteps {
         favouritePage = new FavouritePage(driver);
 
         //add cached traject
-        driver.navigate().to("http://localhost:4200/");
+        searchPage.navigateMainUrl();
         searchPage.enterFromSearch("Zellik");
         searchPage.enterToSearch("Asse");
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         searchPage.clickLike();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         searchPage.clearFromSearch();
         searchPage.clearToSearch();
         searchPage.enterFromSearch("Edingen");
         searchPage.enterToSearch("Asse");
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         searchPage.clickLike();
     }
 
