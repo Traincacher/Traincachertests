@@ -9,7 +9,7 @@ public class AbstractPage {
         this.driver = driver;
     }
     public AbstractPage navigateMainUrl(){
-        //driver.navigate().to("http://localhost:4200/");
+        //driver.navigate().to("http://localhost:4200/"); //
         driver.navigate().to("https://traincacher.online/");
         return this;
     }
