@@ -57,5 +57,10 @@ public class SearchPage extends AbstractPage {
 
         return containsFavourite;
     }
+
+    public boolean checkOnline() {
+        boolean online = driver.findElements(By.id("idoffline")).isEmpty();
+        return online;
+    }
 }
 

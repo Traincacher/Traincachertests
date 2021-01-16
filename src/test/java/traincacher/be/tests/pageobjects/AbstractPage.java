@@ -8,10 +8,4 @@ public class AbstractPage {
     public AbstractPage(WebDriver driver) {
         this.driver = driver;
     }
-
-//    public traincacher.be.tests.pageojects.homepage navigateToHomePage() {
-//        driver.navigate().to("http://localhost:4200/");
-//        return new traincacher.be.tests.pageojects.homepage(driver);
-//    }
-
 }

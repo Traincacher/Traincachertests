@@ -21,7 +21,13 @@ public class GecachedTreintrajectVerwijderenSteps {
 
     @BeforeClass
     public void init(){
-        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+        if (System.getProperty("os.name").contains("Windows")) {
+            System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+        }
+        else
+        {
+            System.setProperty("webdriver.chrome.driver", "chromedriver");
+        }
 
         ChromeOptions options = new ChromeOptions();
         options.addArguments("headless");
