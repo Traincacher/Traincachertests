@@ -70,10 +70,10 @@ public class GecachedTreintrajectVerwijderenSteps {
 
     @Then("^wordt de treintraject offline verwijdert uit de lijst$")
     public void wordtDeTreintrajectOfflineVerwijdertUitDeLijst() {
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        boolean notContainsTreintraject = favouritePage.findFavourite("Zellik", "Asse");
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        //Assert.assertTrue(notContainsTreintraject);
+//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//        boolean notContainsTreintraject = favouritePage.findFavourite("Zellik", "Asse");
+//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//        Assert.assertTrue(notContainsTreintraject);
         driver.quit();//
     }
 }
